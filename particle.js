@@ -10,8 +10,8 @@ class Particle {
         this.acc = new p5.Vector()
         this.r = 8
         this.target = new p5.Vector(x, y)
-        this.maxspeed = 5
-        this.maxforce = 1
+        this.maxspeed = 10
+        this.maxforce = 100
     }
 
     // set up text flee-from-mouse and arrive-at-original-position behaviors
@@ -47,6 +47,11 @@ class Particle {
         // desired velocity by -1 first before limiting
     }
 
+    // arrives at the y position of the target
+    followLeft(target) {
+
+    }
+
     // like seek, but we slow down as we approach our target :3
     arrive(target) {
         // this gives you a vector pointing from us to the target
@@ -65,6 +70,7 @@ class Particle {
 
         // steering = desired - current
         let steer = p5.Vector.sub(desired, this.vel)
+
         return steer.limit(this.maxforce)
     }
 
